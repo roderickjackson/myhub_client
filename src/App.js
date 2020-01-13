@@ -1,12 +1,22 @@
 import React from 'react';
-import Register from './auth/RegisterComponent/Register'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Register from './components/Auth/RegisterComponent/Register'
+import Login from './components/Auth/LoginComponent/Login'
+import Navigation from './components/Navigation/Navigation'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Register></Register>
-    </div>
+		<Router>
+			<div className="App">
+				<Navigation/>
+				<Switch>
+					<Route exact path='/' component={Register}/>
+					<Route exact path='/login' component={Login}/>
+					<Route exact path='/register' component={Register}/>
+				</Switch>
+    	</div>
+		</Router>
   );
 }
 

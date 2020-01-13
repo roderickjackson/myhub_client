@@ -1,6 +1,7 @@
 import React from 'react'
-import './Register.css'
-import HandleState from './RegisterState'
+import { Link } from "react-router-dom"
+import '../authConfig/auth.css'
+import HandleState from '../authConfig/authState'
 
 function Register(){
     const {
@@ -10,7 +11,7 @@ function Register(){
 			handleSubmit,
 			isSubmitting,
 			values
-		} = HandleState()
+		} = HandleState('register')
 			return (
 				<div>
 					<div className="center header-text">
@@ -40,7 +41,30 @@ function Register(){
 								onBlur={handleBlur}
 							/>
 							{errors.password && <p>{errors.password}</p>}
+							<input 
+								type="text"
+								name="firstName"
+								placeholder="First Name"
+								className={errors.firstName}
+								value={values.firstName}
+								onChange={handleChange}
+								onBlur={handleBlur}
+							/>
+							{errors.firstName && <p>{errors.firstName}</p>}
+							<input 
+								type="text"
+								name="lastName"
+								placeholder="Last Name"
+								className={errors.lastName}
+								value={values.lastName}
+								onChange={handleChange}
+								onBlur={handleBlur}
+							/>
+							{errors.lastName && <p>{errors.lastName}</p>}
 							<button disabled={isSubmitting} type="submit">Submit</button>               
+							<p>
+								Already have an account! <Link to="/login">Log in</Link>
+							</p>
 						</form>
 					</div>
 			</div>
