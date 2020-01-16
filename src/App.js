@@ -1,22 +1,14 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Register from './components/Auth/RegisterComponent/Register'
-import Login from './components/Auth/LoginComponent/Login'
-import Navigation from './components/Navigation/Navigation'
-import './App.css';
+import CssBaseline from '@material-ui/core/CssBaseline'
+import MainRouter from '../src/components/Router/MainRouter'
+import Landing from './components/Layout/Landing';
 
 function App() {
   return (
-		<Router>
-			<div className="App">
-				<Navigation/>
-				<Switch>
-					<Route exact path='/' component={Register}/>
-					<Route exact path='/login' component={Login}/>
-					<Route exact path='/register' component={Register}/>
-				</Switch>
-    	</div>
-		</Router>
+		<React.Fragment>
+			<CssBaseline/>
+				<MainRouter/>
+		</React.Fragment>
   );
 }
 

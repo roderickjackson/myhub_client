@@ -71,13 +71,8 @@ function HandleState(auth){
 		console.log('values', values)
 	}
 
-	function handleBlur(){
-		const validationErrors = validate(values)
-		setErrors(validationErrors)
-	}
 	return {
 		errors,
-		handleBlur,
 		handleChange,
 		handleSubmit,
 		isSubmitting,

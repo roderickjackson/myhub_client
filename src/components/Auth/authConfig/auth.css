@@ -1,22 +1,5 @@
-.center{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.header-text{
-	display: flex;
-	flex-flow: column nowrap;   
-}
-
 .form-wrapper{
 	margin: 0 auto;
 	display: flex;
 	flex-flow: column nowrap;
-}
-
-input{
-	width: 300px;
-	height: 25px;
-	margin-bottom: 10px;
 }
