@@ -2,7 +2,7 @@ import { callAPI } from './authAPIConfig'
 
 // Register User
 function registerUser(data){
- return callAPI({
+	return callAPI({
 	 endpoint:`/api/user/register `,
 	 method:'post',
 	 data:data

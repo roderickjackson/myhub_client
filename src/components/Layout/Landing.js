@@ -1,11 +1,9 @@
 import React from 'react'
 import {
 	Root,
-	Content,
 	Sidebar,
 	fixedLayoutPreset,
 } from "@mui-treasury/layout"
-import { Route } from 'react-router-dom'
 import { CssBaseline } from '@material-ui/core'
 
 function Landing(){

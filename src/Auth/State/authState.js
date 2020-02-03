@@ -1,37 +1,33 @@
 import {useState, useEffect} from 'react'
-import validate from './authValidations'
-// import { registerUser, loginUser } from './authAPI';
-import { register, login } from '../../../actions/auth';
+import validate from '../utils/authValidations'
+import { register, login } from '../actions/auth'
+import { useHistory } from 'react-router-dom'
 
 
 function initialState(auth){
-	let registerState = {
-		email: "",
-		password: "",
-		firstName: "",
-		lastName: ""
-	}
-
-	let loginState = {
-		email: "",
-		password: "",
-	}
 
 	if(auth === 'register'){
-		return registerState
+		return {
+			email: "",
+			password: "",
+			firstName: "",
+			lastName: ""
+		}
 	}
-	else{
-		return loginState
+	else {
+		return {
+			email: "",
+			password: "",
+		}
 	}
 }
 
-function authenticateUser(auth, values){
+function authenticateUser(auth, values, history){
 	if(auth === 'register'){
-		return register(values)
+		return register(values, history)
 	}
 	else{
-		return login(values)
-		// return testLogin(values)
+		return login(values, history)
 	}
 }
 
@@ -40,9 +36,10 @@ function HandleState(auth){
 	const [values, setValues] = useState(initialState(auth))
 	const [errors, setErrors] = useState({})
 	const [isSubmitting, setSubmitting] = useState(false);
+	const history = useHistory()
 
   useEffect(() => {
-		if(isSubmitting){
+		if(isSubmitting){ 
 			const noErrors = Object.keys(errors).length === 0
 
       if (noErrors) {
@@ -67,7 +64,8 @@ function HandleState(auth){
 		event.preventDefault()
 		setErrors(validationErrors)
 		setSubmitting(true)
-		authenticateUser(auth, values)
+		authenticateUser(auth, values, history)
+
 		console.log('values', values)
 	}
 

@@ -27,11 +27,14 @@ async function callAPI(payload){
 			url: `${BASE_URL}${endpoint}`,
 			data: data
 		})
+		
 		console.log('response', response)
+		
 		return response
 	}
 	catch(error){
 		console.log("client-side error", error.response)
+		return error.response
 
 	}
 }

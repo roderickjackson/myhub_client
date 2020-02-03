@@ -1,13 +1,12 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline'
-import MainRouter from '../src/components/Router/MainRouter'
-import Landing from './components/Layout/Landing';
+import PublicRouter from './Router/PublicRouter'
 
 function App() {
   return (
 		<React.Fragment>
 			<CssBaseline/>
-				<MainRouter/>
+				<PublicRouter/>
 		</React.Fragment>
   );
 }

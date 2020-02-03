@@ -1,6 +1,6 @@
 import React from 'react'
-import '../authConfig/auth.css'
-import HandleState from '../authConfig/authState'
+import './auth.css'
+import HandleState from '../State/authState'
 import Button from '@material-ui/core/Button'
 import FormControl from "@material-ui/core/FormControl"
 import Grid from '@material-ui/core/Grid'
