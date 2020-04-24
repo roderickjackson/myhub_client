@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './auth.css'
-import HandleState from '../State/authState'
+// import HandleState from '../State/'
+import useHandleFormState from '../../hooks/useHandleFormState'
 import Button from '@material-ui/core/Button'
 import FormControl from "@material-ui/core/FormControl"
 import Grid from '@material-ui/core/Grid'
@@ -9,6 +10,9 @@ import InputLabel from "@material-ui/core/InputLabel"
 import Link from '@material-ui/core/Link'
 import {makeStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import { LOGIN } from '../../constants/form'
+import { LOGIN_ENDPOINT } from '../../constants/apiEndpoints'
+import { UserContext, SET_AUTH_STATUS } from './UserContext'
 
 const useStyles = makeStyles({
 	button: {
@@ -22,23 +26,31 @@ const useStyles = makeStyles({
 	}
 })
 
-
 function Login(){
 	const classes = useStyles()
-    const {
-			errors,
-			handleChange,
-			handleSubmit,
-			isSubmitting,
-			values
-		} = HandleState('login')
-		
+	const payload = {
+		type: LOGIN,
+		endpoint: LOGIN_ENDPOINT,
+		method: 'post'
+	}
+	const initialStateForValues = {
+		email: "",
+		password: ""
+	}
+	const {
+		errors,
+		handleChange,
+		handleSubmit,
+		isSubmitting,
+		values
+	} = useHandleFormState(payload, initialStateForValues)
+		const msg = useContext(UserContext)
 			return (
 				<Grid container	justify="center">
 					<div>
 						<div>
 								<Typography variant="h2" align="center" gutterBottom>
-									My Hub
+									My Hub {msg}
 								</Typography>
 						</div>
 						<div>

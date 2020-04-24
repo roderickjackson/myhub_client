@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container'
 // import AppBar from '@material-ui/core/AppBar'
 import Landing from '../components/Layout/Landing'
 import PrivateRoute from './PrivateRouter'
+import { GlobalState } from "../Auth/Components/UserContext";
 
 function App() {
   return (
@@ -14,10 +15,12 @@ function App() {
 			<Navigation/>
 			<Container maxWidth="lg">
 				<Switch>
-					<Route exact path='/' component={Landing}/>
-					<Route exact path='/login' component={Login}/>
-					<Route exact path='/register' component={Register}/>
-					<PrivateRoute exact path='/landing' component={Landing}/>
+					<GlobalState>
+						<Route exact path='/' component={Landing}/>
+						<Route exact path='/login' component={Login}/>
+						<Route exact path='/register' component={Register}/>
+						<PrivateRoute exact path='/landing' component={Landing}/>
+					</GlobalState>
 				</Switch>
 			</Container>
 		</Router>

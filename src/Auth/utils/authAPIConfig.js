@@ -39,6 +39,4 @@ async function callAPI(payload){
 	}
 }
 
-
-
 export {callAPI, updateAPIConfig}

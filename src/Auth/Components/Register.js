@@ -1,6 +1,6 @@
 import React from 'react'
 import './auth.css'
-import HandleState from '../State/authState'
+import HandleFormState from '../../hooks/useHandleFormState'
 import Button from '@material-ui/core/Button'
 import FormControl from "@material-ui/core/FormControl"
 import Grid from '@material-ui/core/Grid'
@@ -9,6 +9,8 @@ import InputLabel from "@material-ui/core/InputLabel"
 import Link from '@material-ui/core/Link'
 import {makeStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import { REGISTER } from '../../constants/form'
+import { REGISTER_ENDPOINT } from '../../constants/apiEndpoints'
 
 const useStyles = makeStyles({
 	button: {
@@ -26,14 +28,27 @@ const useStyles = makeStyles({
 })
 
 function Register(){
+	// const formType = REGISTER
 	const classes = useStyles()
-    const {
-			errors,
-			handleChange,
-			handleSubmit,
-			isSubmitting,
-			values
-		} = HandleState('register')
+	const payload = {
+			type: REGISTER,
+			endpoint: REGISTER_ENDPOINT,
+			method: 'post'
+		}
+	const initialStateForValues = { 
+		email: "",
+		password: "",
+		firstName: "",
+		lastName: ""
+	}
+	const {
+		errors,
+		handleChange,
+		handleSubmit,
+		isSubmitting,
+		values
+		} = HandleFormState(payload, initialStateForValues)
+
 			return (
 				<Grid container	justify="center">
 					<div>
